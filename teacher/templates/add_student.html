@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h5>Add Student Details</h5>
+    
+    <form method="POST">
+        {%csrf_token%}
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Student Name"><br>
+        <label>Course</label>
+        <input type="text" name="course" placeholder="Course"><br>
+        <label>Age</label>
+        <input type="number" name="age" placeholder="Age"><br>
+        <button type="submit">ADD</button>
+    </form>
+</body>
+</html>
