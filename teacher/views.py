@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login as login
 from django.shortcuts import redirect, render
 from .models import Students
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -58,3 +59,16 @@ def login_view(request):
         })
 
     return render(request, 'login.html')
+
+def register_view(request):
+    if request.method=='POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        if User.objects.filter(username=username).exists():
+            return render(request,'register.html',{
+                'error':'Username already exists.'})
+        User.objects.create_superuser(
+            username=username,
+            password=password)
+        return redirect('login')
+    return render(request,'register.html')       
